@@ -115,3 +115,7 @@ A:hover {text-decoration:underline;color:#cccccc;}
 p{
     margin-left: 1em;
 }
+
+#instruccion{
+    color: red;
+}

@@ -36,23 +36,62 @@ public class historia_medica extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String ap = request.getParameter("ap");
-            String am = request.getParameter("am");
-            String name = request.getParameter("name");
-            
-            
-            HandlerDate hd = new HandlerDate();
-            Date date = new Date();
-            
-            
-            out.print(hd.fecha_formal());
-            out.print("<br>");
-            
-            
-            out.print(ap);
-            out.print(am);
-            out.print(name);
-            
+
+            String ap = request.getParameter("ap").toUpperCase();
+            String am = request.getParameter("am").toUpperCase();
+            String name = request.getParameter("name").toUpperCase();
+            String curp = request.getParameter("curp").toUpperCase();
+            int can = Integer.parseInt(request.getParameter("can"));
+
+            if (ap.isEmpty() || am.isEmpty() || name.isEmpty() || curp.isEmpty()) {
+
+                String script = "<script>"
+                        + "alert('Todos los campos son requeridos');"
+                        + " window.history.back();"
+                        + "</script>";
+                out.print(script);
+
+            } else {
+
+                if (curp.length() != 18) {
+                    String script = "<script>"
+                            + "alert('Hay un error en la CURP, Porfavor reviselo');"
+                            + " window.history.back();"
+                            + "</script>";
+                    out.print(script);
+                } else {
+
+                    HandlerDate hd = new HandlerDate();
+
+                    out.print(hd.fecha_formal());
+                    out.print("<br>");
+
+                    out.print(ap);
+                    out.print("<br>");
+                    out.print(am);
+                    out.print("<br>");
+                    out.print(name);
+                    out.print("<br>");
+                    out.print(curp);
+                    out.print("<br>");
+                        
+                    if(can == 1)
+                    {
+                        out.print("Tiene Cancer :c");
+                    }
+                    if(can == 0 )
+                    {
+                        out.print("No tiene cancer :D");
+                    }
+                 
+                 
+                  
+
+                  
+                }
+
+            }
+
         }
     }
 
@@ -68,7 +107,7 @@ public class historia_medica extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendError(500, "Metodo bloqueado por el Administrador");
     }
 
     /**
