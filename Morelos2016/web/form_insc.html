@@ -13,12 +13,83 @@ and open the template in the editor.
     </head>
     <body>
         <div id="head">
-            <h2>Solicitud de Inscripcion</h2>   
+            <h2>Solicitud de Inscripción</h2>   
         </div>
-        <div id="info">
+        <div id="info" spellcheck>
 
-            <p>Instrucciones: Todos los campos son requeridos, revise todas sus respuestas ya que todos los datos deberan ser comprobables</p>
+            <p id="instruccion">Instrucciones: Todos los campos son requeridos, revise todas sus respuestas ya que todos los datos deberan ser comprobables</p>
+            <center>
+                <form action="./inscripcion" method="POST">
 
+                    <br><br><label id="separar"> .::Datos del Alumno::. </label><br><br>
+
+                    <label>Apellido Paterno: </label><input type="text" name="ap" placeholder="Apellido Paterno"> <br>
+                    <label>Apellido Materno: </label><input type="text" name="am" placeholder="Apellido Materno"> <br>
+                    <label>Nombre(s): </label><input type="text" name="name" placeholder="Nombre(s)"> <br>
+                    <label>CURP: </label><input type="text" name="curp" placeholder="CURP" maxlength="18"><br>
+                    <label>Edad: </label><input type="number" name="años" min="5" max="14" placeholder="Años"><input type="number" name="meses" min="0" max="11" placeholder="Meses"><br>
+                    <label>Sexo: </label><input type="radio" name="sexo" value="1">Masculino<input type="radio" name="sexo" value="0">Femenino <br>
+                    <label>Peso: </label><input type="number" name="pesokg" placeholder="Kilos" min="0" max="100">.<input type="number" name="pesog" placeholder="Gramos" min="0" max="999"> <br>
+                    <label>Estatura: </label><input type="number" name="estaturam" placeholder="Metros" min="0" max="2">.<input type="number" name="estaturacm" placeholder="Centimetros" min="0" max="99"> <br>
+                    
+                    <!-- Tipo de Sangre -->
+                    <br>
+                    <label>Tipo de Sangre</label>
+                            <select name="sangre_letra">
+                                <option selected disabled>Seleccione:</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                    
+                            <select name="sangre_rh">
+                                <option selected disabled>Seleccione:</option>
+                                <option value="POSITIVO">Positivo</option>
+                                <option value="NEGATIVO">Negativo</option>                         
+                            </select>
+                    
+                    <br>
+                    <!-- Fin del Tipo de Sangre-->
+                    
+                    <br>
+                    
+                    <label>Grado: </label><input type="number" name="gdo" placeholder="Grado" max="6" min="1"> <br>
+                    <label>Grupo: </label><input type="text" name="gpo" placeholder="Grupo"> <br>
+                    <label>Turno: </label><input type="radio" name="turno" value="1">Matutino<input type="radio" name="turno" value="0">Vespertino <br>
+                    
+                    <br>              
+                    
+                    <label>Escuela de Procedencia: </label><input type="text" name="escuela_procedencia" placeholder="Escuela"><br>
+                    <label>Direccion Escuela de Procedencia: </label><input type="text" name="escuela_procedencia_dir" placeholder="Dirección"><br>
+                    
+                    
+                     <br><br><label id="separar"> .::Datos del Padre de Familia::. </label><br><br>
+                     
+                    <label>Apellido Paterno: </label><input type="text" name="_ap" placeholder="Apellido Paterno"> <br>
+                    <label>Apellido Materno: </label><input type="text" name="_am" placeholder="Apellido Materno"> <br>
+                    <label>Nombre(s): </label><input type="text" name="_name" placeholder="Nombre(s)"> <br>
+                    <label>CURP: </label><input type="text" name="_curp" placeholder="CURP" maxlength="18"><br>
+                    <label>Edad: </label><input type="number" name="_años" min="0" max="100" placeholder="Años"><br>
+                    
+                    <label>Parentesco: </label><br>
+                    <label>Grado Academico: </label><br>
+                    <label>¿Sabe leer?</label><br>
+                    <label>Ocupación: </label><br>
+                    <label>Teléfono: </label><br>
+                    <label>No. de Recibo: </label><br>
+                    <label>Domicilio: </label><br>
+                    <label>Entre calles: </label><br>
+                    <label>Frente a: </label><br>
+                    <label>Correo Electrónico: </label><br>
+
+                    
+                    <!--Boton de Enviar...-->
+                    <br><br>
+                    <input type="submit" class="button" value="Generar">
+                    <br><br>
+                </form>
+            </center>
         </div>
 
         <div id="foot">

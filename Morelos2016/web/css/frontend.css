@@ -57,6 +57,7 @@ body
     width: available;
 
     height: auto;
+    overflow-y: scroll;
     display: inline-block;
 }
 
@@ -118,4 +119,9 @@ p{
 
 #instruccion{
     color: red;
+}
+
+#separar{
+    color: #111111;
+    font-size: 20px;
 }
