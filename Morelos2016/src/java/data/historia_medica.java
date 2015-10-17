@@ -41,9 +41,11 @@ public class historia_medica extends HttpServlet {
             String am = request.getParameter("am").toUpperCase();
             String name = request.getParameter("name").toUpperCase();
             String curp = request.getParameter("curp").toUpperCase();
-            int can = Integer.parseInt(request.getParameter("can"));
+            String can = request.getParameter("can");
+            
+            
 
-            if (ap.isEmpty() || am.isEmpty() || name.isEmpty() || curp.isEmpty()) {
+            if (ap.isEmpty() || am.isEmpty() || name.isEmpty() || curp.isEmpty() || can.isEmpty()) {
 
                 String script = "<script>"
                         + "alert('Todos los campos son requeridos');"
@@ -74,15 +76,8 @@ public class historia_medica extends HttpServlet {
                     out.print("<br>");
                     out.print(curp);
                     out.print("<br>");
-                        
-                    if(can == 1)
-                    {
-                        out.print("Tiene Cancer :c");
-                    }
-                    if(can == 0 )
-                    {
-                        out.print("No tiene cancer :D");
-                    }
+                    out.print(can + " Tiene Cancer");
+                    
                  
                  
                   
