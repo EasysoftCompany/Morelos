@@ -2,34 +2,54 @@
 
 <html>
     <head>
-        <title>.::Sistema Morelos16::.</title>
+        <title>.::Sistema Morelos 2016::.</title>
+
+        <!-- TAGS IMPORTANTES -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="Scripts/indexjs.js" type="text/javascript"></script>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
-
-        <link href="css/frontend.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" type="image/png" href="css/favicon.ico" />
+        <!-- TAGS IMPORTANTES -->
+
     </head>
     <body>
-        <div id="head">
-            <h2>Escuela Primaria Jose Maria Morelos y Pavon</h2>   
-        </div>
-        <div id="info">
 
-            <!--<p id="bigone">Sitio en Construcción</p>-->
-            <center>
-                <br><br><br><br><br>
-                <br><br><br><br><br>
-                <button onclick="go_insc()" class="button">Solicitud de Inscripcion</button>
+        <nav>
+            <div class="nav-wrapper blue darken-1" >
+                <a href="#" class="brand-logo center">Escuela Primaria Jose Maria Morelos y Pavon</a>
+            </div>
+        </nav>
 
-                <button onclick="go_medic()" class="button">Historia Medica del Alumno</button>
-            </center>
-        </div>
+        <main>
 
-        <div id="foot">
-            <a href="./about.html">Easysoft Company<br>
-                "Cause We Love We Do"</a>
-        </div>
+            <div style="margin-top: 10%;">
+
+                <div class="container">
+
+
+                    <a class="waves-effect waves-light btn-large valign left" href="./form_insc.html">Solicitud de Inscripción</a>
+
+
+                    <a class="waves-effect waves-light btn-large valign right" href="./form_medic.html">Historia Medica del Alumno</a>
+
+
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="page-footer blue darken-2">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Centro de Aprendizaje Digital  
+                    <a class="grey-text text-lighten-4 right" href="about.html">Acerca de</a>
+                </div>
+            </div>
+        </footer>
+
     </body>
 </html>
