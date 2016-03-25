@@ -7,115 +7,330 @@ and open the template in the editor.
 <html>
     <head>
         <title>.::Inscripción::.</title>
+        <!-- TAGS IMPORTANTES -->
         <meta charset="UTF-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/frontend.css" rel="stylesheet" type="text/css"/>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="icon" type="image/png" href="css/favicon.ico" />
+        <!-- TAGS IMPORTANTES -->
     </head>
     <body>
-        <div id="head">
-            <h2>Solicitud de Inscripción</h2>   
-        </div>
-        <div id="info" spellcheck>
 
-            <p id="instruccion">Instrucciones: Todos los campos son requeridos, revise todas sus respuestas ya que todos los datos deberan ser comprobables</p>
-            <center>
+        <main>
+
+            <nav>
+                <div class="nav-wrapper green darken-4" >
+                    <a href="#" class="brand-logo center">Solicitud de Inscripcion</a>
+                </div>
+            </nav>
+
+
+            <div class="container" spellcheck>
+
+                <p class="red-text left">Instrucciones: Todos los campos son requeridos, revise todas sus respuestas ya que todos los datos deberan ser comprobables</p>
+
                 <form action="./inscripcion" method="POST">
 
-                    <br><br><label id="separar"> .::Datos del Alumno::. </label><br><br>
+                    <br><br><h3 class="green-text center"> Datos del Alumno </h3><br><br>
 
-                    <label>Apellido Paterno: </label><input type="text" name="ap" placeholder="Apellido Paterno"> <br>
-                    <label>Apellido Materno: </label><input type="text" name="am" placeholder="Apellido Materno"> <br>
-                    <label>Nombre(s): </label><input type="text" name="name" placeholder="Nombre(s)"> <br>
-                    <label>CURP: </label><input type="text" name="curp" placeholder="CURP" maxlength="18"><br>
-                    <label>Edad: </label><input type="number" name="años" min="5" max="14" placeholder="Años"><input type="number" name="meses" min="0" max="11" placeholder="Meses"><br>
-                    <label>Sexo: </label><input type="radio" name="sexo" value="1">Masculino<input type="radio" name="sexo" value="0">Femenino <br>
-                    <label>Peso: </label><input type="number" name="pesokg" placeholder="Kilos" min="0" max="100">.<input type="number" name="pesog" placeholder="Gramos" min="0" max="999"> <br>
-                    <label>Estatura: </label><input type="number" name="estaturam" placeholder="Metros" min="0" max="2">.<input type="number" name="estaturacm" placeholder="Centimetros" min="0" max="99"> <br>
-                    
+
+                    <div class="input-field">
+                        <input id="ap" name="ap" type="text" class="validate">
+                        <label for="ap" data-error="Error!" data-success="Ok!">Apellido Paterno</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="am" name="am" type="text" class="validate">
+                        <label for="am" data-error="Error!" data-success="Ok!">Apellido Materno</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="name" name="name" type="text" class="validate">
+                        <label for="name" data-error="Error!" data-success="Ok!">Nombre(s)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="curp" name="curp" type="text" class="validate" maxlength="18">
+                        <label for="curp" data-error="Error!" data-success="Ok!">CURP</label>
+                    </div>
+
+                    <label>Edad: </label>
+                    <div class="input-field">
+                        <input id="años" name="años" min="5" max="14" type="number" class="validate">
+                        <label for="años" data-error="Error!" data-success="Ok!">Años</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="meses" name="meses" min="0" max="11" type="number" class="validate">
+                        <label for="meses" data-error="Error!" data-success="Ok!">Meses</label>
+                    </div>
+
+
+                    <label>Sexo: </label>
+                    <p>
+                        <input type="radio" name="sexo" id="Male" value="1">
+                        <label for="Male">Masculino</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" name="sexo" id="Female" value="0">
+                        <label for="Female">Femenino</label>
+                    </p> 
+
+                    <label>Peso: </label>
+                    <div class="input-field">
+                        <input id="pesokg" name="pesokg" min="1" max="100" type="number" class="validate">
+                        <label for="pesokg" data-error="Error!" data-success="Ok!">Kilos</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="pesog" name="pesog" min="0" max="999" type="number" step="100" class="validate">
+                        <label for="pesog" data-error="Error!" data-success="Ok!">Gramos</label>
+                    </div>
+
+
+                    <label>Estatura: </label>
+                    <div class="input-field">
+                        <input id="estaturam" name="estaturam" min="0" max="2" type="number" class="validate">
+                        <label for="estaturam" data-error="Error!" data-success="Ok!">Metros</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="estaturacm" name="estaturacm" min="0" max="99" type="number" class="validate">
+                        <label for="estaturacm" data-error="Error!" data-success="Ok!">Centimetros</label>
+                    </div>
+
+
                     <!-- Tipo de Sangre -->
-                    <br>
-                    <label>Tipo de Sangre</label>
-                            <select name="sangre_letra">
-                                <option selected disabled>Seleccione:</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="AB">AB</option>
-                                <option value="O">O</option>
-                            </select>
-                    
-                            <select name="sangre_rh">
-                                <option selected disabled>Seleccione:</option>
-                                <option value="POSITIVO">Positivo</option>
-                                <option value="NEGATIVO">Negativo</option>                         
-                            </select>
-                    
-                    <br>
+
+                    <div class="row">
+                        <div class="col s12">
+                            <h6>Tipo de Sangre</h6>
+                        </div>
+
+                        <div class="col s6">
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_letra" id="a" value="A">
+                                <label for="a">A</label>
+                            </p>
+
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_letra" id="b" value="B">
+                                <label for="b">B</label>
+                            </p>
+
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_letra" id="ab" value="AB">
+                                <label for="ab">AB</label>
+                            </p>
+
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_letra" id="o" value="O">
+                                <label for="o">O</label>
+                            </p>
+                        </div>
+
+                        <div class="col s6">
+
+                            <h6>RH</h6>
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_rh" id="pos" value="POSITIVO">
+                                <label for="pos">Positivo</label>
+                            </p>
+
+                            <p> 
+                                <input type="radio" class="with-gap" name="sangre_rh" id="neg" value="NEGATIVO">
+                                <label for="neg">Negativo</label>
+                            </p>
+                        </div>
+                    </div>
+
+
                     <!-- Fin del Tipo de Sangre-->
-                    
-                    <br>
-                    
-                    <label>Grado: </label>
-                            <select name="gdo">
-                                <option selected disabled>Seleccione:</option>
-                                <option value="1°">1°</option>
-                                <option value="2°">2°</option>
-                                <option value="3°">3°</option>
-                                <option value="4°">4°</option>
-                                <option value="5°">5°</option>
-                                <option value="6°">6°</option>
-                            </select>
-                    
-                    &nbsp;&nbsp;
-                    <label>Grupo:</label>
-                            <select name="gpo">
-                                <option selected disabled>Seleccione:</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                            </select>
-                    
-                    <br><br>
-                    
-                    <label>Turno: </label><input type="radio" name="turno" value="1">Matutino<input type="radio" name="turno" value="0">Vespertino <br>
-                    
-                    <br>              
-                    
-                    <label>Escuela de Procedencia: </label><input type="text" name="escuela_procedencia" placeholder="Escuela"><br>
-                    <label>Direccion Escuela de Procedencia: </label><input type="text" name="escuela_procedencia_dir" placeholder="Dirección"><br>
-                    
-                    <div id="padre">
-                     <br><br><label id="separar"> .::Datos del Padre de Familia::. </label><br><br>
-                     
-                    <label>Apellido Paterno: </label><input type="text" name="_ap" placeholder="Apellido Paterno"> <br>
-                    <label>Apellido Materno: </label><input type="text" name="_am" placeholder="Apellido Materno"> <br>
-                    <label>Nombre(s): </label><input type="text" name="_name" placeholder="Nombre(s)"> <br>
-                    <label>CURP: </label><input type="text" name="_curp" placeholder="CURP" maxlength="18"><br>
-                    <label>Edad: </label><input type="number" name="_años" min="0" max="100" placeholder="Años"><br>
-                    
-                    <label>Parentesco: </label><br>
-                    <label>Grado Academico: </label><br>
-                    <label>¿Sabe leer?</label><br>
-                    <label>Ocupación: </label><br>
-                    <label>Teléfono: </label><br>
-                    <label>No. de Recibo: </label><br>
-                    <label>Domicilio: </label><br>
-                    <label>Entre calles: </label><br>
-                    <label>Frente a: </label><br>
-                    <label>Correo Electrónico: </label><br>
+                    <div class="row">
+                        <div class="col s12">
+                            <h6>Grado y Grupo Al que se Inscribe</h6>
+                        </div>
+
+                        <div class="col s6">
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="1" value="1º">
+                                <label for="1">1º</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="2" value="2º">
+                                <label for="2">2º</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="3" value="3º">
+                                <label for="3">3º</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="4" value="4º">
+                                <label for="4">4º</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="5" value="5º">
+                                <label for="5">5º</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gdo" id="6" value="6º">
+                                <label for="6">6º</label>
+                            </p>
+                        </div>
+                        <!-- GRUPO -->
+                        <div class="col s6">
+                            <p> 
+                                <input type="radio" class="with-gap" name="gpo" id="A" value="A">
+                                <label for="A">A</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gpo" id="B" value="B">
+                                <label for="B">B</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gpo" id="C" value="C">
+                                <label for="C">C</label>
+                            </p>
+                            <p> 
+                                <input type="radio" class="with-gap" name="gpo" id="D" value="D">
+                                <label for="D">D</label>
+                            </p>
+                        </div>
 
                     </div>
-                    <!--Boton de Enviar...-->
-                    <br><br>
-                    <input type="submit" class="button" value="Generar">
-                    <br><br>
-                </form>
-            </center>
-        </div>
 
-        <div id="foot">
-            <a href="./about.html">Easysoft Company<br>
-                "Cause We Love We Do"</a>
-        </div>
+                    <label>Turno: </label>
+
+                    <p>
+                        <input type="radio" name="turno" id="mat" value="1">
+                        <label for="mat">Matutino</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="turno" id="ves" value="0">
+                        <label for="ves">Vespertino</label>
+                    </p>
+
+
+                    <div class="input-field">
+                        <input id="escuela_procedencia" name="escuela_procedencia" type="text" class="validate">
+                        <label for="escuela_procedencia" data-error="Error!" data-success="Ok!">Escuela de Procedencia</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="escuela_procedencia_dir" name="escuela_procedencia_dir" type="text" class="validate">
+                        <label for="escuela_procedencia_dir" data-error="Error!" data-success="Ok!">Direccion Escuela de Procedencia</label>
+                    </div>
+
+
+
+                    <br><br><h3 class="green-text center"> Datos del Padre de Familia </h3><br><br>
+
+
+                    <div class="input-field">
+                        <input id="_ap" name="_ap" type="text" class="validate">
+                        <label for="_ap" data-error="Error!" data-success="Ok!">Apellido Paterno</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="_am" name="_am" type="text" class="validate">
+                        <label for="_am" data-error="Error!" data-success="Ok!">Apellido Materno</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="_name" name="_name" type="text" class="validate">
+                        <label for="_name" data-error="Error!" data-success="Ok!">Nombre(s)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="_curp" name="_curp" type="text" class="validate" maxlength="18">
+                        <label for="_curp" data-error="Error!" data-success="Ok!">CURP</label>
+                    </div>
+
+
+                    <div class="input-field">
+                        <input id="_años" name="_años" min="0" max="100" type="number" class="validate">
+                        <label for="_años" data-error="Error!" data-success="Ok!">Edad</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="parentesco" name="parentesco" type="text" class="validate">
+                        <label for="parentesco" data-error="Error!" data-success="Ok!">Parentesco</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="Grado_Academico" name="Grado_Academico" type="text" class="validate">
+                        <label for="Grado_Academico" data-error="Error!" data-success="Ok!">Grado Academico</label>
+                    </div>
+
+                    <h6>¿Sabe Leer?</h6>
+                    <p>
+                        <input type="radio" name="lee" id="si" value="Si">
+                        <label for="si">Si</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="lee" id="no" value="No">
+                        <label for="no">No</label>
+                    </p>
+
+                    <div class="input-field">
+                        <input id="Ocupacion" name="Ocupacion" type="text" class="validate">
+                        <label for="Ocupacion" data-error="Error!" data-success="Ok!">Ocupacion</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="tel" name="tel" type="number" class="validate">
+                        <label for="tel" data-error="Error!" data-success="Ok!">Telefono</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="no_recibo" name="no_recibo" type="number" min="0" max="9999" class="validate">
+                        <label for="no_recibo" data-error="Error!" data-success="Ok!">Numero de Recibo</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="domicilio" name="domicilio" type="text" class="validate">
+                        <label for="domicilio" data-error="Error!" data-success="Ok!">Domicilio</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="entre_calles" name="entre_calles" type="text" class="validate">
+                        <label for="entre_calles" data-error="Error!" data-success="Ok!">Entre Calles</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="frente_a" name="frente_a" type="text" class="validate">
+                        <label for="frente_a" data-error="Error!" data-success="Ok!">Frente a</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="email" name="email" type="email" class="validate">
+                        <label for="email" data-error="Error!" data-success="Ok!">Correo Electronico</label>
+                    </div>
+
+
+
+                    <!--Boton de Enviar...-->
+                    <div class="row">
+                        <div class="col s4 offset-s8">
+                            <button class="btn waves-effect waves-light green center" type="submit" name="action">Generar Ficha
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </main>
+
+        <footer class="page-footer green darken-4">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Centro de Aprendizaje Digital  
+                    <a class="grey-text text-lighten-4 right" href="about.html">Acerca de</a>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

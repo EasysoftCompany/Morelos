@@ -126,7 +126,7 @@ public class historia_medica extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Genera la historia medica del alumno en formato PDF imprimible";
     }// </editor-fold>
 
 }
