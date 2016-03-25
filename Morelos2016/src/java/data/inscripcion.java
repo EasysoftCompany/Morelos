@@ -5,7 +5,13 @@
  */
 package data;
 
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,54 +38,92 @@ public class inscripcion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String ap = request.getParameter("ap").toUpperCase();
-            String am = request.getParameter("am").toUpperCase();
-            String name = request.getParameter("name").toUpperCase();
-            String curp = request.getParameter("curp").toUpperCase();
-            int can = Integer.parseInt(request.getParameter("can"));
 
-            if (ap.isEmpty() || am.isEmpty() || name.isEmpty() || curp.isEmpty()) {
+        String ap = request.getParameter("ap").toUpperCase();
+        String am = request.getParameter("am").toUpperCase();
+        String name = request.getParameter("name").toUpperCase();
+        String curp = request.getParameter("curp").toUpperCase();
+        String años = request.getParameter("anos");
+        String meses = request.getParameter("meses");
+        String sexo = request.getParameter("sexo");
+      
+        String pesokg = request.getParameter("pesokg");
+        String pesog = request.getParameter("pesog");
+        String estaturam = request.getParameter("estaturam");
+        String estaturacm = request.getParameter("estaturacm");
 
-                String script = "<script>"
-                        + "alert('Todos los campos son requeridos');"
-                        + " window.history.back();"
-                        + "</script>";
-                out.print(script);
+        String sangre_letra = request.getParameter("sangre_letra");
+        String sangre_rh = request.getParameter("sangre_rh");
+
+        String gdo = request.getParameter("gdo");
+        String gpo = request.getParameter("gpo");
+
+        String turno = request.getParameter("turno");
+        String escuela_procedencia = request.getParameter("escuela_procedencia").toUpperCase();
+        String escuela_procedencia_dir = request.getParameter("escuela_procedencia_dir").toUpperCase();
+
+        //Datos Padre de Familia
+        String _ap = request.getParameter("_ap").toUpperCase();
+        String _am = request.getParameter("_am").toUpperCase();
+        String _name = request.getParameter("_name").toUpperCase();
+        String _curp = request.getParameter("_curp").toUpperCase();
+        String _años = request.getParameter("_anos");
+        String parentesco = request.getParameter("parentesco").toUpperCase();
+        String Grado_Academico = request.getParameter("Grado_Academico").toUpperCase();
+        String lee = request.getParameter("lee");
+        String Ocupacion = request.getParameter("Ocupacion").toUpperCase();
+        String tel = request.getParameter("tel");
+        String no_recibo = request.getParameter("no_recibo");
+        String domicilio = request.getParameter("domicilio").toUpperCase();
+        String entre_calles = request.getParameter("entre_calles").toUpperCase();
+        String frente_a = request.getParameter("frente_a").toUpperCase();
+        String email = request.getParameter("email");
+
+        if (ap.isEmpty() || am.isEmpty() || name.isEmpty() || curp.isEmpty() || _años.isEmpty() || _ap.isEmpty() || _am.isEmpty() || _name.isEmpty() || _curp.isEmpty()
+                || años.isEmpty() || meses.isEmpty() || sexo.isEmpty() || pesokg.isEmpty() || pesog.isEmpty() || estaturam.isEmpty() || estaturacm.isEmpty()
+                || sangre_letra.isEmpty() || sangre_rh.isEmpty() || gdo.isEmpty() || gpo.isEmpty() || turno.isEmpty() || escuela_procedencia.isEmpty() || escuela_procedencia_dir.isEmpty()
+                || parentesco.isEmpty() || Grado_Academico.isEmpty() || lee.isEmpty() || Ocupacion.isEmpty() || tel.isEmpty() || no_recibo.isEmpty() || domicilio.isEmpty() || entre_calles.isEmpty() || frente_a.isEmpty() || email.isEmpty()) {
+
+            response.sendError(400, "Todos los campos son requeridos!");
+
+        } else {
+
+            if (curp.length() != 18 || _curp.length() != 18) {
+                response.sendError(400, "Error en la CURP!");
 
             } else {
 
-                if (curp.length() != 18) {
-                    String script = "<script>"
-                            + "alert('Hay un error en la CURP, Porfavor reviselo');"
-                            + " window.history.back();"
-                            + "</script>";
-                    out.print(script);
-                } else {
+                HandlerDate hd = new HandlerDate();
 
-                    HandlerDate hd = new HandlerDate();
+                try {
+                    InputStream is = getServletContext().getResourceAsStream("/files/TurnadoSRC.pdf");
 
-                    out.print(hd.fecha_formal());
-                    out.print("<br>");
+                    PdfReader reader = new PdfReader(is);
 
-                    out.print(ap);
-                    out.print("<br>");
-                    out.print(am);
-                    out.print("<br>");
-                    out.print(name);
-                    out.print("<br>");
-                    out.print(curp);
-                    out.print("<br>");
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-                    if (can == 1) {
-                        out.print("Tiene Cancer :c");
-                    }
-                    if (can == 0) {
-                        out.print("No tiene cancer :D");
-                    }
+                    PdfStamper stamper = new PdfStamper(reader, baos);
+
+                    stamper.getAcroFields().setField("fecha_elaboracion", hd.fecha_formal());
+
+                    stamper.close();
+                    reader.close();
+                    // setting the content type
+                    response.setContentType("application/pdf");
+                    // the contentlength
+                    response.setContentLength(baos.size());
+                    // Lo sacamos a la pagina directamente
+                    OutputStream os = response.getOutputStream();
+                    baos.writeTo(os);
+                    os.flush();
+                    os.close();
+                } catch (DocumentException e) {
+                    throw new IOException(e.getMessage());
                 }
+
             }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
